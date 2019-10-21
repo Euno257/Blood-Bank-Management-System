@@ -12,9 +12,15 @@
 <li>are over 70 and have given blood in the last two years</li>
 </ul></p>
   <hr class="my-4">
-  <form class="form-inline my-2 my-lg-0">
+  <!-- <form class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-  </form>
+
+  </form> -->
+  <select>
+    <option selected>Select options for custom search</option>
+    <option value="1">search by donor</option>
+    <option value="2">search by blood group</option>
+  </select>
+  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 </div>
 {% endblock %}
