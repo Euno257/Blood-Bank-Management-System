@@ -1,0 +1,16 @@
+Flask==1.1.1
+Flask-Bootstrap==3.3.5.7
+Flask-Compress==1.4.0
+Flask-DebugToolbar==0.10.1
+Flask-Login==0.3.2
+Flask-Mail==0.9.1
+Flask-Migrate==2.1.1
+Flask-Moment==0.5.1
+Flask-OpenID==1.2.5
+Flask-PageDown==0.2.2
+Flask-RESTful==0.3.6
+Flask-Script==2.0.5
+Flask-Session==0.3.1
+Flask-SQLAlchemy==2.3.2
+Flask-Uploads==0.2.1
+Flask-WTF==0.11
