@@ -1,13 +1,20 @@
 {% extends 'layout.html' %}
 
+{% block body %}
+<div class="jumbotron text-centre">
+  <h1>Welcome to Blood-Bank Monitoring System</h1>
+  <p>Most people are able to give blood, but only 4% actually do. You can donate blood if you:
+<ul style="list-style-type:square">
 
-<div class="container">
-  {% block body %}
-  <!-- <form class="form-inline my-2 my-lg-0">
+<li>are fit and healthy</li>
+<li>weigh at least 50kg (7st 12lb)</li>
+<li>are 17-66 years old (or 70 if you've given blood before)</li>
+<li>are over 70 and have given blood in the last two years</li>
+</ul></p>
+  <hr class="my-4">
+  <form class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-  </form> -->
-  Search here!
-  
-  {% endblock %}
+  </form>
 </div>
+{% endblock %}

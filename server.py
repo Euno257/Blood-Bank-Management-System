@@ -5,6 +5,6 @@ app = Flask(__name__)
 def index():
     return render_template('home.html')
 
-@app.route('/hello')
-def hello():
-    return 'Hello, World'
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')

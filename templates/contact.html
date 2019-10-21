@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="jumbotron text-centre">
+  <h1>Fill up the following details for blood orders </h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <hr class="my-4">
+  <select class="custom-select">
+  <option selected>Select blood group</option>
+  <option value="1">A+</option>
+  <option value="2">A-</option>
+  <option value="3">B+</option>
+  <option value="4">B-</option>
+  <option value="5">AB+</option>
+  <option value="6">AB-</option>
+  <option value="7">O+</option>
+  <option value="8">O-</option>
+  </select>
+<form method="post">
+  <div class="form-group">
+    <label for="inputAddress">Number of Packets</label>
+    <input type="number" class="form-control" id="inputAddress" placeholder="Blood Packets">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName">Full Name</label>
+      <input type="text" class="form-control" id="inputName" placeholder="Full Name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main Road">
+  </div>
+  <button type="submit" class="btn btn-primary">submit</button>
+</form>
+
+
+</div>
+{% endblock %}
