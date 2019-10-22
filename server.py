@@ -41,7 +41,14 @@ def register():
         e_id = name+str(random.randint(1111,9999))
         #Create cursor
         cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO RECEPTION(E_ID,NAME,EMAIL,PASSWORD) VALUES(%d, %s, %s, %s)",(e_id, name, email, password))
+        #Commit to DB
+        mysql.connection.commit()
+        #close connection
+        cur.close()
+        flash('You are now registered and can log in','sucess')
 
-        return render_template('register.html')
 
+        redirect(url_for('index'))
+        
     return render_template('register.html',form = form)
