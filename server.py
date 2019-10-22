@@ -2,7 +2,17 @@ from flask import Flask, render_template, flash, redirect, request, url_for, ses
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
+import random
 app = Flask(__name__)
+
+#Config MySQL
+app.config['MYSQL_HOST']='localhost'
+app.config['MYSQL_USER']='root'
+app.config['MYSQL_PASSWORD']='123456'
+app.config['MYSQL_DB']='bloodbank'
+app.config['MYSQL_CURSORCLASS']='DictCursor'
+#init MySQL
+mysql =  MySQL(app)
 
 @app.route('/')
 def index():
@@ -25,6 +35,13 @@ class RegisterForm(Form):
 def register():
     form = RegisterForm(request.form)
     if request.method  == 'POST' and form.validate():
+        name = form.name.data
+        email = form.email.data
+        password = sha256_crypt.encrypt(str(form.password.data))
+        e_id = name+str(random.randint(1111,9999))
+        #Create cursor
+        cur = mysql.connection.cursor()
+
         return render_template('register.html')
 
     return render_template('register.html',form = form)
