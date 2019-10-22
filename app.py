@@ -4,6 +4,8 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 import random
 app = Flask(__name__)
+app.secret_key='some secret key'
+
 
 #Config MySQL
 app.config['MYSQL_HOST']='localhost'
@@ -46,12 +48,12 @@ def register():
         mysql.connection.commit()
         #close connection
         cur.close()
-        flash('You are now registered and can log in','sucess')
+        flashing_message = "Success! You can log in with Employee ID " + str(e_id)
+        flash( flashing_message,"success")
 
-        return redirect(url_for('index'))
+        return redirect(url_for('register'))
 
     return render_template('register.html',form = form)
 
 if __name__ == '__main__':
-    app.secret_key='secret123'
     app.run(debug=True)
