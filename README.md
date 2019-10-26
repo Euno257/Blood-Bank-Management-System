@@ -17,7 +17,7 @@ Open MySQL in terminal:
 ```
 mysql -u root -p
 ```
-or 
+or
 ```
 sudo mysql -u root -p
 ```
@@ -27,6 +27,9 @@ SHOW DATABASES;
 ```
 Creating a new database:
 ```
-CREATE DATABASE databasename;
+CREATE DATABASE bloodbank;
 ```
-
+Use any database:
+```
+USE bloodbank;
+```
