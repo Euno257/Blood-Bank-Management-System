@@ -13,15 +13,24 @@ Run the app:
 flask run
 ```
 ## Database commands
-Open MySQL in terminal:
+### Open MySQL in terminal:
 ```
 mysql -u root -p
 ```
-or
+If the above commands doesn't works then:
 ```
 sudo mysql -u root -p
 ```
-View all databases:
+followed by updating the password using:
+```
+$ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new-password';
+```
+Once this is done stop and start the mysql server:
+```
+$  sudo service mysql stop
+$  sudo service mysql start
+```
+### View all databases:
 ```
 SHOW DATABASES;
 ```
