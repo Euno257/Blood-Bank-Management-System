@@ -3,18 +3,20 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item default">
-        <a class="nav-link" href="/">Search</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/contact">Contact</a>
-      </li>
+      {% if session.logged_in %}
+        <li class="nav-item default"><a class="nav-link" href="/donor">Add Donor</a></li>
+      {% else %}
+        <li class="nav-item default"><a class="nav-link" href="/">Search</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+      {% endif %}
     </ul>
-    <li class="nav-item">
-      <a class="nav-link" href="/register">Register</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/login">Login</a>
-    </li>
+
+    {% if session.logged_in %}
+      <li><a href="/logout">Logout</a></li>
+    {% else %}
+      <li><a href="/register">Register</a></li>
+      <li><a href="/login">Login</a></li>
+    {% endif %}
+
   </div>
 </nav>

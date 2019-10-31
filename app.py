@@ -81,7 +81,7 @@ def login():
                 session['e_id'] = e_id
 
                 flash('You are now logged in', 'success')
-                return redirect(url_for('index'))
+                return redirect(url_for('dashboard'))
             else:
                 error = 'Invalid login'
                 return render_template('login.html', error=error)
@@ -92,6 +92,17 @@ def login():
             return render_template('login.html', error=error)
 
     return render_template('login.html')
+
+#Logout
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('You are now logged out', 'success')
+    return redirect(url_for('index'))
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
