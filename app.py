@@ -3,6 +3,9 @@ from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt
 import random
+from functools import wraps
+
+
 app = Flask(__name__)
 app.secret_key='some secret key'
 
@@ -93,18 +96,32 @@ def login():
 
     return render_template('login.html')
 
+# Check if user logged in
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('Unauthorized, Please login!', 'danger')
+            return redirect(url_for('login'))
+    return wrap
+
 #Logout
 @app.route('/logout')
+@is_logged_in
 def logout():
     session.clear()
     flash('You are now logged out', 'success')
     return redirect(url_for('index'))
 
 @app.route('/dashboard')
+@is_logged_in
 def dashboard():
     return render_template('dashboard.html')
 
 @app.route('/donate', methods=['GET', 'POST'])
+@is_logged_in
 def donate():
     if request.method  == 'POST':
         # Get Form Fields
