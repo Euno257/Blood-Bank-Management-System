@@ -4,14 +4,15 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       {% if session.logged_in %}
-        <li class="nav-item default"><a class="nav-link" href="/donor">Add Donor</a></li>
+        <li class="nav-item default"><a class="nav-link" href="/donate">Donate</a></li>
       {% else %}
         <li class="nav-item default"><a class="nav-link" href="/">Search</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact us</a></li>
       {% endif %}
     </ul>
 
     {% if session.logged_in %}
+    <li class="nav-item default"><a href="/dashboard">Dashboard</a></li>
       <li><a href="/logout">Logout</a></li>
     {% else %}
       <li><a href="/register">Register</a></li>

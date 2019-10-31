@@ -104,5 +104,31 @@ def logout():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/donate', methods=['GET', 'POST'])
+def donate():
+    if request.method  == 'POST':
+        # Get Form Fields
+        dname = request.form["dname"]
+        sex = request.form["sex"]
+        age = request.form["age"]
+        weight = request.form["weight"]
+        address = request.form["address"]
+        disease =  request.form["disease"]
+        demail = request.form["demail"]
+
+        #create a cursor
+        cur = mysql.connection.cursor()
+
+        #Inserting values into tables
+        cur.execute("INSERT INTO DONOR(DNAME,SEX,AGE,WEIGHT,ADDRESS,DISEASE,DEMAIL) VALUES(%s, %s, %s, %s, %s, %s, %s)",(dname , sex, age, weight, address, disease, demail))
+        #Commit to DB
+        mysql.connection.commit()
+        #close connection
+        cur.close()
+        flash('Success! Donor details Added.','success')
+        return redirect(url_for('donate'))
+
+    return render_template('donate.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
