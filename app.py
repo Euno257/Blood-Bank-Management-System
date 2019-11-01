@@ -147,5 +147,21 @@ def donate():
 
     return render_template('donate.html')
 
+@app.route('/donorlogs')
+@is_logged_in
+def donorlogs():
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT * FROM DONOR")
+    logs = cur.fetchall()
+
+    if result>0:
+        return render_template('donorlogs.html',logs=logs)
+    else:
+        msg = ' No logs found '
+        return render_template('donorlogs.html',msg=msg)
+    #close connection
+    cur.close()
+
+
 if __name__ == '__main__':
     app.run(debug=True)

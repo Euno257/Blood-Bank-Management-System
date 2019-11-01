@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="jumbotron">
+  <h1>Donors List</h1>
+  <hr class="my-4">
+  <table class="table table-striped">
+    <tr>
+      <th>Donor ID</th>
+      <th>Donor Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>Weight</th>
+      <th>Address</th>
+      <th>Disease</th>
+      <th>Email</th>
+      <th>Date & Time</th>
+    </tr>
+    {% for log in logs %}
+      <tr>
+        <td>{{log.D_ID}}</td>
+        <td>{{log.DNAME}}</td>
+        <td>{{log.SEX}}</td>
+        <td>{{log.AGE}}</td>
+        <td>{{log.WEIGHT}}</td>
+        <td>{{log.ADDRESS}}</td>
+        <td>{{log.DISEASE}}</td>
+        <td>{{log.DEMAIL}}</td>
+        <td>{{log.DONOR_DATE}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
