@@ -23,8 +23,26 @@ mysql =  MySQL(app)
 def index():
     return render_template('home.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET','POST'])
 def contact():
+    if request.method == 'POST':
+        bgroup = request.form["bgroup"]
+        bpackets = request.form["bpackets"]
+        fname = request.form["fname"]
+        adress = request.form["adress"]
+
+        #create a cursor
+        cur = mysql.connection.cursor()
+
+        #Inserting values into tables
+        cur.execute("INSERT INTO CONTACT(B_GROUP,C_PACKETS,F_NAME,ADRESS) VALUES(%s, %s, %s, %s)",(bgroup, bpackets, fname, adress))
+        #Commit to DB
+        mysql.connection.commit()
+        #close connection
+        cur.close()
+        flash('Your request is sent successfully to the Blood Bank','success')
+        return redirect(url_for('index'))
+
     return render_template('contact.html')
 
 class RegisterForm(Form):
