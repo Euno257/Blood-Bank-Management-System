@@ -143,7 +143,7 @@ def donate():
         #close connection
         cur.close()
         flash('Success! Donor details Added.','success')
-        return redirect(url_for('donate'))
+        return redirect(url_for('donorlogs'))
 
     return render_template('donate.html')
 
@@ -161,6 +161,34 @@ def donorlogs():
         return render_template('donorlogs.html',msg=msg)
     #close connection
     cur.close()
+
+
+@app.route('/bloodform',methods=['GET','POST'])
+@is_logged_in
+def bloodform():
+    if request.method  == 'POST':
+        # Get Form Fields
+        d_id = request.form["d_id"]
+        blood_group = request.form["blood_group"]
+        packets = request.form["packets"]
+
+        #create a cursor
+        cur = mysql.connection.cursor()
+
+        #Inserting values into tables
+        cur.execute("INSERT INTO BLOOD(D_ID,B_GROUP,PACKETS) VALUES(%s, %s, %s)",(d_id , blood_group, packets))
+        cur.execute("SELECT * FROM BLOODBANK")
+        records = cur.fetchall()
+        cur.execute("UPDATE BLOODBANK SET TOTAL_PACKETS = TOTAL_PACKETS+%s WHERE B_GROUP = %s",(packets,blood_group))
+        #Commit to DB
+        mysql.connection.commit()
+        #close connection
+        cur.close()
+        flash('Success! Donor Blood details Added.','success')
+        return redirect(url_for('dashboard'))
+
+    return render_template('bloodform.html')
+
 
 
 if __name__ == '__main__':
