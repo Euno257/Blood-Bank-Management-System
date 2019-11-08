@@ -118,7 +118,17 @@ def logout():
 @app.route('/dashboard')
 @is_logged_in
 def dashboard():
-    return render_template('dashboard.html')
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT * FROM BLOODBANK")
+    details = cur.fetchall()
+
+    if result>0:
+        return render_template('dashboard.html',details=details)
+    else:
+        msg = ' Blood Bank is Empty '
+        return render_template('dashboard.html',msg=msg)
+    #close connection
+    cur.close()
 
 @app.route('/donate', methods=['GET', 'POST'])
 @is_logged_in

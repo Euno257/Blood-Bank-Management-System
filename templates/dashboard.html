@@ -3,32 +3,18 @@
 {% block body %}
 <div class="jumbotron">
 <h1>Welcome {{session.e_id}}</small> </h1>
-<!-- <hr class="my-4">
+<hr class="my-4">
 <table class="table table-striped">
   <tr>
-    <th>B_CODE</th>
-    <th>Donor ID</th>
-    <th>BLOOD Group</th>
-    <th>Age</th>
-    <th>Weight</th>
-    <th>Address</th>
-    <th>Disease</th>
-    <th>Email</th>
-    <th>Date & Time</th>
+    <th>Blood Groups</th>
+    <th>Number of Packets</th>
   </tr>
-  {% for log in logs %}
+  {% for detail in details %}
     <tr>
-      <td>{{log.D_ID}}</td>
-      <td>{{log.DNAME}}</td>
-      <td>{{log.SEX}}</td>
-      <td>{{log.AGE}}</td>
-      <td>{{log.WEIGHT}}</td>
-      <td>{{log.ADDRESS}}</td>
-      <td>{{log.DISEASE}}</td>
-      <td>{{log.DEMAIL}}</td>
-      <td>{{log.DONOR_DATE}}</td>
+      <td>{{detail.B_GROUP}}</td>
+      <td>{{detail.TOTAL_PACKETS}}</td>
     </tr>
   {% endfor %}
-</table> -->
+</table>
 </div>
 {% endblock %}
