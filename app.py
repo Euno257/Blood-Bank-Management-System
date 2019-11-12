@@ -19,17 +19,9 @@ app.config['MYSQL_CURSORCLASS']='DictCursor'
 #init MySQL
 mysql =  MySQL(app)
 
-class BankSearchForm(Form):
-    choices = [('DONOR', 'DONOR'),
-               ('BLOOD', 'BLOOD')]
-    select = SelectField('Search for Donor/Blood',choices=choices)
-    search = StringField('')
 
 @app.route('/')
 def index():
-    search = BankSearchForm(request.form)
-    if request.method == 'POST':
-        return search(search)
     return render_template('home.html')
 
 @app.route('/contact', methods=['GET','POST'])
@@ -228,18 +220,6 @@ def bloodform():
 
     return render_template('bloodform.html')
 
-
-
-#@app.route('/search',methods=['GET','POST'])
-def search(search):
-    cur = mysql.connection.cursor()
-    result = cur.execute("SELECT * FROM DONOR WHERE DNAME = %s;", (query,))
-    if result > 0:
-        data  = cur.fetchall()
-        return render_template('search.html' , data = search)
-    else:
-        flash('No results found!')
-        return redirect('/')
 
 @app.route('/notifications')
 @is_logged_in
