@@ -16,31 +16,9 @@
     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 
   </form> -->
-  <!-- <select>
+  <select>
     <option selected>Select options for custom search</option>
     <option value="1">search by donor</option>
     <option value="2">search by blood group</option>
   </select>
-  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> -->
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-
-
-{% from 'includes/_formhelpers.html' import render_field %}
-<form method=post>
-  <dl>
-    {{ render_field(form.select) }}
-    <p>
-    {{ render_field(form.search) }}
-  </dl>
-  <p><input type=submit value=Search>
-</form>
-</div>
-{% endblock %}
+  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> 
