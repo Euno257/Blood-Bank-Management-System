@@ -18,8 +18,12 @@ app.config['MYSQL_DB']='bloodbank'
 app.config['MYSQL_CURSORCLASS']='DictCursor'
 #init MySQL
 mysql =  MySQL(app)
-bgroup="AB+"
-bpackets=3
+
+class BankSearchForm(Form):
+    choices = [('DONOR', 'DONOR'),
+               ('BLOOD', 'BLOOD')]
+    select = SelectField('Search for Donor/Blood',choices=choices)
+    search = StringField('')
 
 @app.route('/')
 def index():
@@ -224,11 +228,7 @@ def bloodform():
 
     return render_template('bloodform.html')
 
-class BankSearchForm(Form):
-    choices = [('DONOR', 'DONOR'),
-               ('BLOOD', 'BLOOD')]
-    select = SelectField('Search for Donor/Blood', choices=choices)
-    search = StringField('')
+
 
 #@app.route('/search',methods=['GET','POST'])
 def search(search):
