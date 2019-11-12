@@ -1,6 +1,6 @@
 from flask import Flask, render_template, flash, redirect, request, url_for, session, logging
 from flask_mysqldb import MySQL
-from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+from wtforms import Form, StringField, TextAreaField, PasswordField, validators, SelectField
 from passlib.hash import sha256_crypt
 import random
 from functools import wraps
@@ -23,6 +23,9 @@ bpackets=3
 
 @app.route('/')
 def index():
+    search = BankSearchForm(request.form)
+    if request.method == 'POST':
+        return search(search)
     return render_template('home.html')
 
 @app.route('/contact', methods=['GET','POST'])
@@ -220,6 +223,23 @@ def bloodform():
         return redirect(url_for('dashboard'))
 
     return render_template('bloodform.html')
+
+class BankSearchForm(Form):
+    choices = [('DONOR', 'DONOR'),
+               ('BLOOD', 'BLOOD')]
+    select = SelectField('Search for Donor/Blood', choices=choices)
+    search = StringField('')
+
+#@app.route('/search',methods=['GET','POST'])
+def search(search):
+    cur = mysql.connection.cursor()
+    result = cur.execute("SELECT * FROM DONOR WHERE DNAME = %s;", (query,))
+    if result > 0:
+        data  = cur.fetchall()
+        return render_template('search.html' , data = search)
+    else:
+        flash('No results found!')
+        return redirect('/')
 
 @app.route('/notifications')
 @is_logged_in
