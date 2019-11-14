@@ -1,8 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+
 <div class="jumbotron text-centre">
   <h1>Welcome to Blood-Bank Monitoring System</h1>
+  <img src="{{url_for('static',filename='images.jpeg')}}" alt="Donate blood" width="1050" height="250" style="padding:15px;">
   <p>Most people are able to give blood, but only 4% actually do. You can donate blood if you:
 <ul style="list-style-type:square">
 
@@ -21,4 +23,6 @@
     <option value="1">search by donor</option>
     <option value="2">search by blood group</option>
   </select>
-  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> 
+  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+</div>
+{% endblock %}
