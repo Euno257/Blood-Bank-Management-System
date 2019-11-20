@@ -2,6 +2,7 @@
 
 {% block body %}
 
+
 <div class="jumbotron text-centre">
   <h1>Welcome to Blood-Bank Monitoring System</h1>
   <img src="{{url_for('static',filename='images.jpeg')}}" alt="Donate blood" width="1050" height="250" style="padding:15px;">
@@ -23,6 +24,6 @@
     <option value="1">search by donor</option>
     <option value="2">search by blood group</option>
   </select>
-  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+  <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="background-color:#932007">Search</button>
 </div>
 {% endblock %}
