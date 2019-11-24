@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-dark navbar-full" style="background-color:#932007">
-  <a class="navbar-brand" href="/">BloodBank-Monitoring</a>
+<nav class="navbar navbar-expand-md navbar-dark navbar-full" style="background-color:#932007; font-size: 20px;" >
+  <a class="navbar-brand" href="/" style="font-family:Arial, Helvetica, sans-serif;">Blood Bank Monitoring</a>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
@@ -16,10 +16,10 @@
 
     {% if session.logged_in %}
     <li class="nav-item default"><a href="/dashboard">Dashboard</a></li>
-      <li><a href="/logout">Logout</a></li>
+      <li class="nav-item default"><a href="/logout">Logout</a></li>
     {% else %}
-      <li><a href="/register">Register</a></li>
-      <li><a href="/login">Login</a></li>
+      <li class="nav-item default"><a href="/register">Register</a></li>
+      <li class="nav-item default"><a href="/login">Login</a></li>
     {% endif %}
 
   </div>
