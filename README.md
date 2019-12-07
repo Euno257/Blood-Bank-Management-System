@@ -42,3 +42,23 @@ Use any database:
 ```
 USE bloodbank;
 ```
+
+## Snapshots
+### Home Page
+![](snapshots/home.png)
+### Contact US
+![](snapshots/contact.png)
+### Register
+![](snapshots/register.png)
+### Login
+![](snapshots/login.png)
+### Dashboard
+![](snapshots/dashboard.png)
+### Add Donor
+![](snapshots/donate.png)
+### Donor Logs
+![](snapshots/logs.png)
+### Donor Details
+![](snapshots/details.png)
+### Requests
+![](snapshots/requests.png)
