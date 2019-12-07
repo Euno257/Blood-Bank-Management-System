@@ -58,7 +58,7 @@ USE bloodbank;
 ![](snapshots/donate.png)
 ### Donor Logs
 ![](snapshots/logs.png)
-### Donor Details
+### Donor Blood Details
 ![](snapshots/details.png)
-### Requests
+### Blood Requests
 ![](snapshots/requests.png)
