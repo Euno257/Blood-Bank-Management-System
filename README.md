@@ -46,7 +46,7 @@ USE bloodbank;
 ## Snapshots
 ### Home Page
 ![](snapshots/home.png)
-### Contact US
+### Contact Us
 ![](snapshots/contact.png)
 ### Register
 ![](snapshots/register.png)
