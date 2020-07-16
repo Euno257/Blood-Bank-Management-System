@@ -1,4 +1,4 @@
-# Blood-Bank-Monitoring-System
+# Information Management System For A Blood Bank
 ## Flask Commands:
 Install Dependencies:
 ```
